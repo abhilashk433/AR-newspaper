@@ -1,2 +1,2 @@
 # AR-newspaper
-Inspired from Harry Potter
+Inspired from Harry Potter.
