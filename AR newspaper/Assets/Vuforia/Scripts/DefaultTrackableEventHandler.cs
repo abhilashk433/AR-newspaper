@@ -8,6 +8,7 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using Vuforia;
+using UnityEngine.Video;
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -22,6 +23,11 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     protected TrackableBehaviour mTrackableBehaviour;
     protected TrackableBehaviour.Status m_PreviousStatus;
     protected TrackableBehaviour.Status m_NewStatus;
+
+    /// <summary>
+    /// creating a Videoplayer variable
+    public VideoPlayer videoPlayer;
+    /// </summary>
 
     #endregion // PROTECTED_MEMBER_VARIABLES
 
@@ -83,6 +89,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     protected virtual void OnTrackingFound()
     {
+        videoPlayer.frame = 0;
+        videoPlayer.Play();
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
@@ -103,6 +111,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
     protected virtual void OnTrackingLost()
     {
+        videoPlayer.Pause();
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
