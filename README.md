@@ -1,4 +1,4 @@
-# AR-newspaper
+# AR--newspaper
 Inspired from Harry Potter!
 
 Checkout the video .
